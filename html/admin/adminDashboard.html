@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard - SLU Shuttle</title>
+
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/admin/dashboard.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar admin-sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a data-target="adminDashboard.html" class="nav-item active">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+
+                    <a data-target="users.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Users
+                    </a>
+
+                    <a data-target="shuttles.html" class="nav-item">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Shuttles
+                    </a>
+
+                    <a data-target="routes.html" class="nav-item">
+                        <i data-lucide="map-pin" class="icon-sm"></i>
+                        Routes
+                    </a>
+
+                    <a data-target="schedules.html" class="nav-item">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedules
+                    </a>
+
+                    <a data-target="announcements.html" class="nav-item">
+                        <i data-lucide="bell" class="icon-sm"></i>
+                        Announcements
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar admin-avatar">
+                        <span>AD</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">System Administrator</div>
+                    </div>
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="page-title">Admin Dashboard</h1>
+                        <p class="page-subtitle">System overview and management.</p>
+                    </div>
+                    <div class="header-actions">
+                        <a href="adminAnnouncements.html" class="btn btn-outline">
+                            <i data-lucide="plus" class="icon-sm mr-2"></i>
+                            New Announcement
+                        </a>
+                        <button class="btn btn-primary">
+                            Manage Users
+                            <i data-lucide="arrow-right" class="icon-sm ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Active Shuttles</p>
+                            <p id="activeShuttlesCount" class="stat-value">0</p>
+                            <p class="stat-trend positive">
+                                <i data-lucide="trending-up" class="icon-xs"></i> 12% vs last week
+                            </p>
+                        </div>
+                        <div class="stat-icon-wrapper secondary">
+                            <i data-lucide="bus" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Total Users</p>
+                            <p id="totalUsersCount" class="stat-value">0</p>
+                            <p class="stat-desc">Students & Drivers</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="users" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Routes</p>
+                            <p id="routesCount" class="stat-value">0</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="map-pin" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Today's Bookings</p>
+                            <p id="bookingsCount" class="stat-value">0</p>
+                            <p class="stat-trend positive">
+                                <i data-lucide="trending-up" class="icon-xs"></i> 8% vs yesterday
+                            </p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="ticket" class="icon-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content Grid -->
+                <div class="dashboard-content-grid">
+                    
+                    <!-- Left Column (Map & Fleet) -->
+                    <div class="left-column">
+                        
+                        <!-- Live Map -->
+                        <div class="card map-card">
+                            <div class="card-header flex justify-between items-center">
+                                <h3 class="card-title">Live Fleet Overview</h3>
+                                <span class="live-badge">
+                                    <span class="pulse-dot"></span> Live
+                                </span>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="map-container" id="adminMap">
+                                    <!-- Simulated Map Elements -->
+                                    <div class="map-bg"></div>
+                                    <div class="map-route path-1"></div>
+                                    <div class="map-shuttle shuttle-1">
+                                        <div class="shuttle-dot"></div>
+                                        <div class="shuttle-tooltip">Bus 101</div>
+                                    </div>
+                                    <div class="map-shuttle shuttle-2">
+                                        <div class="shuttle-dot"></div>
+                                        <div class="shuttle-tooltip">Bus 104</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fleet Status -->
+                        <div class="card">
+                            <div class="card-header flex justify-between items-center">
+                                <h3 class="card-title">Fleet Status</h3>
+                                <button class="btn-ghost-sm">View All</button>
+                            </div>
+                            <div class="card-body">
+                                <div id="fleetList" class="fleet-list">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column (Actions & Activity) -->
+                    <div class="right-column">
+                        
+                        <!-- Quick Actions -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Quick Actions</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="action-list">
+                                    <button class="action-item">
+                                        <div class="action-icon"><i data-lucide="users" class="icon-sm"></i></div>
+                                        <span>Manage Users</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <div class="action-icon"><i data-lucide="bus" class="icon-sm"></i></div>
+                                        <span>Manage Shuttles</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <div class="action-icon"><i data-lucide="map-pin" class="icon-sm"></i></div>
+                                        <span>Manage Routes</span>
+                                    </button>
+                                    <button class="action-item">
+                                        <div class="action-icon"><i data-lucide="calendar" class="icon-sm"></i></div>
+                                        <span>Manage Schedules</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recent Activity</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-secondary-light">
+                                            <i data-lucide="ticket" class="icon-xs text-secondary"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p class="act-title">New booking</p>
+                                            <p class="act-user">John Doe</p>
+                                        </div>
+                                        <span class="act-time">2m ago</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-accent-light">
+                                            <i data-lucide="bus" class="icon-xs text-accent"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p class="act-title">Shuttle started</p>
+                                            <p class="act-user">Shuttle 101</p>
+                                        </div>
+                                        <span class="act-time">15m ago</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-success-light">
+                                            <i data-lucide="user-plus" class="icon-xs text-success"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p class="act-title">User registered</p>
+                                            <p class="act-user">Jane Smith</p>
+                                        </div>
+                                        <span class="act-time">1h ago</span>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-muted">
+                                            <i data-lucide="map" class="icon-xs text-muted-foreground"></i>
+                                        </div>
+                                        <div class="activity-details">
+                                            <p class="act-title">Route updated</p>
+                                            <p class="act-user">Campus - Navy Base</p>
+                                        </div>
+                                        <span class="act-time">2h ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- System Alerts -->
+                        <div class="card bg-warning-light border-warning">
+                            <div class="card-header-compact">
+                                <h3 class="card-title text-warning flex items-center gap-2">
+                                    <i data-lucide="alert-circle" class="icon-sm"></i> Alerts
+                                </h3>
+                            </div>
+                            <div class="card-body pt-0">
+                                <div class="alert-item">
+                                    <p class="alert-text">Shuttle 104 needs maintenance</p>
+                                    <p class="alert-sub">Last service: 30 days ago</p>
+                                </div>
+                                <div class="alert-item mt-3 pt-3 border-t border-warning-subtle">
+                                    <p class="alert-text">High demand on Route 1</p>
+                                    <p class="alert-sub">Consider adding more shuttles</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="/javascript/admin/dashboard.js"></script>
+        <script src="/javascript/navigation.js"></script>
+    </body>
+</html>

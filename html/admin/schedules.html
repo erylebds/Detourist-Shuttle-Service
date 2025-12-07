@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Schedule Management - Admin Portal</title>
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/admin/schedules.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar admin-sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a data-target="adminDashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+
+                    <a data-target="users.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Users
+                    </a>
+
+                    <a data-target="shuttles.html" class="nav-item">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Shuttles
+                    </a>
+
+                    <a data-target="routes.html" class="nav-item">
+                        <i data-lucide="map-pin" class="icon-sm"></i>
+                        Routes
+                    </a>
+
+                    <a data-target="schedules.html" class="nav-item active">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedules
+                    </a>
+
+                    <a data-target="announcements.html" class="nav-item">
+                        <i data-lucide="bell" class="icon-sm"></i>
+                        Announcements
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar admin-avatar">
+                        <span>AD</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">System Administrator</div>
+                    </div>
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header flex justify-between items-center">
+                    <div>
+                        <h1 class="page-title">Schedule Management</h1>
+                        <p class="page-subtitle">Manage shuttle schedules and assignments.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openAddModal()">
+                        <i data-lucide="plus" class="icon-sm mr-2"></i>
+                        Add Schedule
+                    </button>
+                </div>
+
+                <!-- Date Navigator -->
+                <div class="date-navigator-card mb-6">
+                    <div class="date-navigator-content">
+                        <div class="date-left">
+                            <div class="calendar-icon-box">
+                                <i data-lucide="calendar" class="icon-md text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <p id="currentDateDisplay">Monday, December 8, 2025</p>
+                                <p id="tripCountDisplay">4 scheduled trips</p>
+                            </div>
+                        </div>
+                        <div class="date-buttons">
+                            <button class="btn btn-outline btn-sm">Previous Day</button>
+                            <button class="btn btn-outline btn-sm">Next Day</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Today's Schedule</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="scheduleList" class="schedule-list">
+                        </div>
+                        
+                        <!-- Empty State -->
+                        <div id="noResults" class="empty-state" style="display: none;">
+                            <div class="empty-icon-wrapper">
+                                <i data-lucide="calendar-off" class="icon-lg text-muted-foreground"></i>
+                            </div>
+                            <h3 class="empty-title">No schedules for today</h3>
+                            <p class="empty-desc">Click "Add Schedule" to create a new trip.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Add Schedule Modal -->
+        <div id="addScheduleModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Add New Schedule</h2>
+                    <button class="btn-icon-close" onclick="closeModal()">
+                        <i data-lucide="x" class="icon-sm"></i>
+                    </button>
+                </div>
+                <form onsubmit="handleAddSchedule(event)">
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Departure Time</label>
+                                <input type="time" class="input-field" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Route</label>
+                                <div class="select-wrapper">
+                                    <select id="routeSelect" class="input-field select-field">
+                                    </select>
+                                    <i data-lucide="chevron-down" class="select-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Assign Shuttle</label>
+                            <div class="select-wrapper">
+                                <select id="shuttleSelect" class="input-field select-field">
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Assign Driver</label>
+                            <div class="select-wrapper">
+                                <select id="driverSelect" class="input-field select-field">
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Schedule</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="/javascript/admin/schedules.js"></script>
+        <script src="/javascript/navigation.js"></script>
+    </body>
+</html>

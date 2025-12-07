@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Schedule - SLU Shuttle</title>
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/driver/schedule.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a data-target="driverDashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+                    
+                    <a data-target="driverSchedule.html" class="nav-item active">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedule
+                    </a>
+
+                    <a data-target="driverPassengers.html" class="nav-item">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Passengers
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar">
+                        <span>MD</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Manong Driver</div>
+                        <div class="user-role">Driver ID: 8829</div>
+                    </div>
+
+                    <!-- Logout -->
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='/html/index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header flex justify-between items-end">
+                    <div>
+                        <h1 class="page-title">My Schedule</h1>
+                        <p class="page-subtitle">View your assigned routes and timings.</p>
+                    </div>
+                    <div class="date-badge">
+                        <i data-lucide="calendar" class="icon-xs"></i>
+                        <span id="currentDate">Loading date...</span>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon accent">
+                            <i data-lucide="bus" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p id="totalTrips" class="stat-number">--</p>
+                            <p class="stat-desc">Trips Today</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="check-circle" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-number">0</p>
+                            <p class="stat-desc">Completed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon secondary">
+                            <i data-lucide="clock" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p id="nextTripTime" class="stat-number">--:--</p>
+                            <p class="stat-desc">Next Trip</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Timeline -->
+                <div class="card timeline-card">
+                    <div class="card-header">
+                        <h3 class="card-title">Today's Timeline</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="scheduleTimeline" class="schedule-timeline">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="/javascript/driver/schedule.js"></script>
+        <script src="/javascript/navigation.js"></script>
+    </body>
+</html>

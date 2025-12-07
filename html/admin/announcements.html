@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Announcements - Admin Portal</title>
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/admin/announcements.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar admin-sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a data-target="adminDashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+
+                    <a data-target="users.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Users
+                    </a>
+
+                    <a data-target="shuttles.html" class="nav-item">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Shuttles
+                    </a>
+
+                    <a data-target="routes.html" class="nav-item">
+                        <i data-lucide="map-pin" class="icon-sm"></i>
+                        Routes
+                    </a>
+
+                    <a data-target="schedules.html" class="nav-item">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedules
+                    </a>
+
+                    <a data-target="announcements.html" class="nav-item active">
+                        <i data-lucide="bell" class="icon-sm"></i>
+                        Announcements
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar admin-avatar">
+                        <span>AD</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">System Administrator</div>
+                    </div>
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header flex justify-between items-center">
+                    <div>
+                        <h1 class="page-title">Announcements</h1>
+                        <p class="page-subtitle">Send announcements to students and drivers.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal()">
+                        <i data-lucide="plus" class="icon-sm mr-2"></i>
+                        New Announcement
+                    </button>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon secondary">
+                            <i data-lucide="bell" class="icon-md"></i>
+                        </div>
+
+                        <div class="stat-info">
+                            <p id="totalCount" class="stat-number">0</p>
+                            <p class="stat-desc">Total Sent</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon accent">
+                            <i data-lucide="users" class="icon-md"></i>
+                        </div>
+
+                        <div class="stat-info">
+                            <p id="studentCount" class="stat-number">0</p>
+                            <p class="stat-desc">For Students</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="bus" class="icon-md"></i>
+                        </div>
+
+                        <div class="stat-info">
+                            <p id="driverCount" class="stat-number">0</p>
+                            <p class="stat-desc">For Drivers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Announcement List -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Announcements</h3>
+                    </div>
+
+                    <div class="card-body">
+                        <div id="announcementList" class="announcement-list">
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+
+        <!-- Create Announcement Modal -->
+        <div id="announcementModal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h2 class="modal-title">Create Announcement</h2>
+                        <p class="modal-desc">Send an update to the campus community.</p>
+                    </div>
+                    <button class="btn-icon-close" onclick="closeModal()">
+                        <i data-lucide="x" class="icon-sm"></i>
+                    </button>
+                </div>
+                
+                <form id="announcementForm" onsubmit="handleCreate(event)">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="form-label" for="title">Title</label>
+                            <input type="text" id="title" class="input-field" placeholder="Announcement title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" class="input-field textarea-field" rows="4" placeholder="Write your announcement..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="audience">Target Audience</label>
+                            <div class="select-wrapper">
+                                <select id="audience" class="input-field select-field">
+                                    <option value="all">Everyone</option>
+                                    <option value="students">Students Only</option>
+                                    <option value="drivers">Drivers Only</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="send" class="icon-xs mr-2"></i> Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="/javascript/admin/announcements.js"></script>
+        <script src="/javascript/navigation.js"></script>
+    </body>
+</html>

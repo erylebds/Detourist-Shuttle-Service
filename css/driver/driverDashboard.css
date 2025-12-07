@@ -123,7 +123,7 @@
     flex: 1;
     margin-left: 280px;
     padding: 2.5rem;
-    max-width: 1400px;
+    max-width: 1800px;
 }
 
 .dashboard-header {
@@ -278,7 +278,7 @@
 
 .timeline-connector {
     position: absolute;
-    left: 1.35rem; /* center of dot */
+    left: 1.35rem;
     top: 1rem;
     bottom: -1rem;
     width: 2px;
