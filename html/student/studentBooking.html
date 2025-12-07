@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Bookings - SLU Shuttle</title>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/student/studentBooking.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-secondary-foreground"></i>
+                    </div>
+                    <span class="sidebar-title">LouisanTheGO</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active">
+                        <i data-lucide="ticket" class="icon-sm"></i>
+                        My Bookings
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="map" class="icon-sm"></i>
+                        Live Tracking
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedules
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar">
+                        <span>JD</span>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.9rem;">John Doe</div>
+                        <div style="font-size: 0.8rem; opacity: 0.7;">Student</div>
+                    </div>
+                    <button style="margin-left: auto; background: none; border: none; color: white; opacity: 0.7; cursor: pointer;">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                
+                <!-- Header -->
+                <header class="page-header">
+                    <h1 class="page-title">My Bookings</h1>
+                    <p class="page-subtitle">View and manage your shuttle reservations.</p>
+                </header>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <!-- Total -->
+                    <div class="stat-card">
+                        <div class="stat-icon secondary">
+                            <i data-lucide="ticket" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-number">12</p>
+                            <p class="stat-desc">Total Bookings</p>
+                        </div>
+                    </div>
+                    <!-- Active -->
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="check-circle" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-number">2</p>
+                            <p class="stat-desc">Active</p>
+                        </div>
+                    </div>
+                    <!-- Completed -->
+                    <div class="stat-card">
+                        <div class="stat-icon muted">
+                            <i data-lucide="clock" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-number">10</p>
+                            <p class="stat-desc">Completed</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="dashboard-tabs">
+                    <button class="dashboard-tab-btn active" onclick="switchDashTab('active')">
+                        Active 
+                        <span class="tab-badge">2</span>
+                    </button>
+                    <button class="dashboard-tab-btn" onclick="switchDashTab('past')">
+                        Past Bookings
+                    </button>
+                </div>
+
+                <!-- Tab Content: Active -->
+                <div id="activeContent" class="bookings-list">
+                    
+                    <!-- Card 1 -->
+                    <article class="booking-card">
+                        <div class="booking-header">
+                            <div class="route-info">
+                                <h3>Main Campus ➝ Bakakeng</h3>
+                                <p>
+                                    <i data-lucide="calendar" class="icon-xs"></i> Today, Oct 24
+                                </p>
+                            </div>
+                            <span class="status-badge status-confirmed">Confirmed</span>
+                        </div>
+                        <div class="booking-body">
+                            <div class="info-row">
+                                <span class="info-label">Departure</span>
+                                <span class="info-value">09:30 AM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Shuttle</span>
+                                <span class="info-value">Bus 101 (ABC-1234)</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Seat</span>
+                                <span class="info-value">14</span>
+                            </div>
+                        </div>
+                        <div class="booking-footer">
+                            <button class="btn btn-outline" style="flex: 1; border-color: #ef4444; color: #ef4444;">Cancel</button>
+                            <button class="btn btn-secondary" style="flex: 1;">Boarding Pass</button>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="booking-card">
+                        <div class="booking-header">
+                            <div class="route-info">
+                                <h3>Bakakeng ➝ Main Campus</h3>
+                                <p>
+                                    <i data-lucide="calendar" class="icon-xs"></i> Tomorrow, Oct 25
+                                </p>
+                            </div>
+                            <span class="status-badge status-pending">Pending</span>
+                        </div>
+                        <div class="booking-body">
+                            <div class="info-row">
+                                <span class="info-label">Departure</span>
+                                <span class="info-value">04:00 PM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Shuttle</span>
+                                <span class="info-value">Bus 104 (XYZ-9876)</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Seat</span>
+                                <span class="info-value">--</span>
+                            </div>
+                        </div>
+                        <div class="booking-footer">
+                            <button class="btn btn-outline" style="flex: 1; border-color: #ef4444; color: #ef4444;">Cancel</button>
+                            <button class="btn btn-secondary" style="flex: 1;" disabled>Wait for Conf</button>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div id="pastContent" class="bookings-list" style="display: none;">
+                    <!-- Card 3 -->
+                    <article class="booking-card" style="opacity: 0.7;">
+                        <div class="booking-header">
+                            <div class="route-info">
+                                <h3>Main Campus ➝ Navy Base</h3>
+                                <p>
+                                    <i data-lucide="calendar" class="icon-xs"></i> Oct 20
+                                </p>
+                            </div>
+                            <span class="status-badge" style="background: #e2e8f0; color: #64748b;">Completed</span>
+                        </div>
+                        <div class="booking-body">
+                            <div class="info-row">
+                                <span class="info-label">Departure</span>
+                                <span class="info-value">07:00 AM</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Shuttle</span>
+                                <span class="info-value">Bus 102</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+            </main>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                lucide.createIcons();
+            });
+
+            // Simple Tab Switcher for UI Demo
+            function switchDashTab(tabName) {
+                const activeBtn = document.querySelector(`.dashboard-tab-btn[onclick*="${tabName}"]`);
+                const otherBtn = document.querySelector(`.dashboard-tab-btn:not([onclick*="${tabName}"])`);
+                
+                // Toggle Buttons
+                activeBtn.classList.add('active');
+                otherBtn.classList.remove('active');
+
+                // Toggle Content
+                if (tabName === 'active') {
+                    document.getElementById('activeContent').style.display = 'grid';
+                    document.getElementById('pastContent').style.display = 'none';
+                } else {
+                    document.getElementById('activeContent').style.display = 'none';
+                    document.getElementById('pastContent').style.display = 'grid';
+                }
+            }
+        </script>
+    </body>
+</html>

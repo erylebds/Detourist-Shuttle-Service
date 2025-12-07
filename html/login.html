@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LouisanTheGO</title>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/login.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-background text-foreground font-sans">
+
+        <div class="auth-container">
+            <!-- Left Side (Branding & Stats) -->
+            <div id="authLeft" class="auth-left bg-gradient-student">
+                
+                <!-- Background Pattern -->
+                <div class="auth-pattern">
+                    <svg width="100%" height="100%">
+                        <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                            <circle cx="2" cy="2" r="1" fill="currentColor" opacity="0.3"/>
+                        </pattern>
+                        <rect width="100%" height="100%" fill="url(#dots)" />
+                    </svg>
+                </div>
+
+                <div class="auth-brand relative z-10">
+                    <a href="index.html" class="back-link">
+                        <i data-lucide="arrow-left" class="icon-xs"></i>
+                        Back to Home
+                    </a>
+                    <div class="auth-logo-wrapper">
+                        <div class="auth-logo-box">
+                            <i data-lucide="bus" class="icon-lg text-white"></i>
+                        </div>
+                        <span class="text-2xl font-bold">LouisanTheGO</span>
+                    </div>
+                </div>
+
+                <div class="auth-hero-text relative z-10">
+                    <h1 id="portalTitle">Student Portal</h1>
+                    <p id="portalDesc">Access shuttle bookings and tracking</p>
+
+                    <div class="auth-stats">
+                        <div class="auth-stat-card">
+                            <p class="auth-stat-value">24/7</p>
+                            <p class="auth-stat-label">Support Available</p>
+                        </div>
+                        <div class="auth-stat-card">
+                            <p class="auth-stat-value">100%</p>
+                            <p class="auth-stat-label">Secure Login</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 text-sm opacity-60">
+                    © 2024 Saint Louis University
+                </div>
+            </div>
+
+            <!-- Right Side (Forms) -->
+            <div class="auth-right">
+                <div class="auth-form-wrapper">
+                    
+                    <!-- Mobile Header -->
+                    <div class="mobile-auth-header">
+                        <a href="index.html" class="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-4 text-sm">
+                            <i data-lucide="arrow-left" class="icon-xs"></i> Back to Home
+                        </a>
+                        <div class="flex items-center justify-center gap-2">
+                            <div class="p-2 rounded-lg bg-secondary">
+                                <i data-lucide="bus" class="icon-md text-secondary-foreground"></i>
+                            </div>
+                            <span class="text-xl font-bold">LouisanTheGO</span>
+                        </div>
+                    </div>
+
+                    <div class="auth-card">
+                        <div class="auth-card-header">
+                            <h2 id="formTitle" class="auth-title">Student Portal</h2>
+                            <p id="formDesc" class="auth-desc">Access shuttle bookings and tracking</p>
+                        </div>
+
+                        <div class="auth-card-content">
+                            <!-- Tabs Navigation -->
+                            <div class="tabs-list">
+                                <button class="tab-trigger active" onclick="switchTab('login')">Login</button>
+                                <button id="signupTabBtn" class="tab-trigger" onclick="switchTab('signup')">Sign Up</button>
+                            </div>
+
+                            <!-- Login Form -->
+                            <div id="loginForm" class="form-content active">
+                                <form onsubmit="handleLogin(event)">
+                                    <div class="form-group">
+                                        <label class="form-label" for="email">Email</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="mail" class="input-icon"></i>
+                                            <input type="email" id="email" class="input-field" placeholder="Enter your email" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="password">Password</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="lock" class="input-icon"></i>
+                                            <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+                                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                                <i data-lucide="eye" class="icon-xs"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-footer">
+                                        <label class="checkbox-wrapper">
+                                            <input type="checkbox" class="rounded border-input">
+                                            <span class="text-muted-foreground">Remember me</span>
+                                        </label>
+                                        <a href="#" class="forgot-link">Forgot password?</a>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-secondary w-full" style="width: 100%; justify-content: center;">Sign In</button>
+                                </form>
+                            </div>
+
+                            <!-- Signup Form -->
+                            <div id="signupForm" class="form-content">
+                                <form onsubmit="handleSignup(event)">
+                                    <div class="form-group">
+                                        <label class="form-label" for="signup-name">Full Name</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="user" class="input-icon"></i>
+                                            <input type="text" id="signup-name" class="input-field" placeholder="Enter your full name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="signup-email">Email</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="mail" class="input-icon"></i>
+                                            <input type="email" id="signup-email" class="input-field" placeholder="Enter your SLU email" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label" for="signup-phone">Phone Number</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="phone" class="input-icon"></i>
+                                            <input type="tel" id="signup-phone" class="input-field" placeholder="Enter your phone number" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="form-group">
+                                        <label class="form-label" for="signup-pass">Password</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="lock" class="input-icon"></i>
+                                            <input type="password" id="signup-pass" class="input-field" placeholder="Create a password" required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="form-group">
+                                        <label class="form-label" for="signup-confirm-pass">Confirm Password</label>
+                                        <div class="input-wrapper">
+                                            <i data-lucide="lock" class="input-icon"></i>
+                                            <input type="password" id="signup-confirm-pass" class="input-field" placeholder="Confirm your password" required>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-secondary w-full" style="width: 100%; justify-content: center;">Create Account</button>
+                                </form>
+                            </div>
+
+                            <!-- Quick Access -->
+                            <div class="quick-access">
+                                <p class="qa-title">Quick Access (Demo)</p>
+                                <div class="qa-buttons">
+                                    <button class="btn-qa" onclick="setDemo('student')">Student</button>
+                                    <button class="btn-qa" onclick="setDemo('driver')">Driver</button>
+                                    <button class="btn-qa" onclick="setDemo('admin')">Admin</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/javascript/loginRole.js"></script>
+    </body>
+</html>

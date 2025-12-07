@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LouisanTheGO</title>
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    </head>
+    <body class="page-body">
+
+        <!-- Hero / Header -->
+        <header class="hero">
+            <div class="hero-inner">
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <div class="nav-container">
+                        <div class="nav-brand">
+                            <div class="nav-logo">
+                                <i data-lucide="bus" class="icon-md icon-on-secondary"></i>
+                            </div>
+                            <span class="nav-title">LouisanTheGO</span>
+                        </div>
+
+                        <div class="nav-actions">
+                            <a href="login.html?role=student" class="nav-link">Login</a>
+                            <a href="login.html?role=student" class="btn btn-secondary">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="hero-grid">
+
+                        <!-- Text Column -->
+                        <section class="hero-text animate-fade-in">
+                            <div class="hero-badge">
+                                <span class="status-dot"></span>
+                                <span>Live shuttle tracking available</span>
+                            </div>
+
+                            <h1 class="hero-title">
+                                Your Campus
+                                <span class="text-gradient">Shuttle System</span>
+                            </h1>
+
+                            <p class="hero-subtitle">
+                                Book rides, track shuttles in real-time, and never miss your classes again. 
+                                The smart way to navigate campus.
+                            </p>
+
+                            <div class="hero-actions">
+                                <a href="login.html?role=student" class="btn btn-secondary btn-lg">
+                                    Book a Ride
+                                    <i data-lucide="arrow-right" class="icon-sm icon-on-secondary"></i>
+                                </a>
+                                <a href="#roles" class="btn btn-outline-light btn-lg">
+                                    View Portals
+                                </a>
+                            </div>
+
+                            <!-- Stats -->
+                            <section class="hero-stats" aria-label="Shuttle statistics">
+                                <div class="stat">
+                                    <p class="stat-value">500+</p>
+                                    <p class="stat-label">Daily Rides</p>
+                                </div>
+                                <div class="stat">
+                                    <p class="stat-value">15</p>
+                                    <p class="stat-label">Active Shuttles</p>
+                                </div>
+                                <div class="stat">
+                                    <p class="stat-value">98%</p>
+                                    <p class="stat-label">On-time Rate</p>
+                                </div>
+                            </section>
+                        </section>
+
+                        <!-- Visual Column (Spinner) -->
+                        <section class="hero-visual" aria-hidden="true">
+                            <div class="visual-wrapper">
+                                <div class="visual-center">
+                                    <!-- Outer ring -->
+                                    <div class="ring-outer animate-spin-slow"></div>
+
+                                    <!-- Middle ring -->
+                                    <div class="ring-middle"></div>
+
+                                    <!-- Inner content -->
+                                    <div class="visual-bus-container animate-float shadow-glow">
+                                        <i data-lucide="bus" class="icon-xxl icon-on-secondary"></i>
+                                    </div>
+
+                                    <!-- Orbiting icons -->
+                                    <div class="orbit orbit-top delay-1000 animate-float">
+                                        <div class="orbit-icon orbit-accent">
+                                            <i data-lucide="map-pin" class="icon-md icon-on-primary-light"></i>
+                                        </div>
+                                    </div>
+                                    <div class="orbit orbit-bottom-right delay-2000 animate-float">
+                                        <div class="orbit-icon orbit-success">
+                                            <i data-lucide="clock" class="icon-sm icon-on-primary-light"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+
+                <!-- Wave Divider -->
+                <div class="hero-wave">
+                    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" class="hero-wave-svg">
+                        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#ffffff"/>
+                    </svg>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Features Section -->
+            <section class="section section-features" aria-labelledby="features-heading">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="features-heading" class="section-title">
+                            Why Choose LouisanTheGO?
+                        </h2>
+                        <p class="section-subtitle">
+                            Our modern shuttle system provides a seamless transportation experience for the entire campus community.
+                        </p>
+                    </header>
+
+                    <div class="cards-grid">
+                        <!-- Feature 1 -->
+                        <article class="card feature-card delay-0">
+                            <div class="card-inner">
+                                <div class="icon-badge">
+                                    <i data-lucide="map-pin" class="icon-md icon-secondary"></i>
+                                </div>
+                                <h3 class="card-title">Real-time Tracking</h3>
+                                <p class="card-text">
+                                    Track your shuttle location in real-time and get accurate arrival estimates.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Feature 2 -->
+                        <article class="card feature-card delay-100">
+                            <div class="card-inner">
+                                <div class="icon-badge">
+                                    <i data-lucide="clock" class="icon-md icon-secondary"></i>
+                                </div>
+                                <h3 class="card-title">Easy Booking</h3>
+                                <p class="card-text">
+                                    Book your ride in seconds with our intuitive reservation system.
+                                </p>
+                            </div>
+                        </article>
+
+                        <!-- Feature 3 -->
+                        <article class="card feature-card delay-200">
+                            <div class="card-inner">
+                                <div class="icon-badge">
+                                    <i data-lucide="smartphone" class="icon-md icon-secondary"></i>
+                                </div>
+                                <h3 class="card-title">Mobile Friendly</h3>
+                                <p class="card-text">
+                                    Access the system from any device, anywhere, anytime.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Roles Section -->
+            <section id="roles" class="section section-roles" aria-labelledby="roles-heading">
+                <div class="container">
+                    <header class="section-header">
+                        <h2 id="roles-heading" class="section-title">
+                            Choose Your Portal
+                        </h2>
+                        <p class="section-subtitle">
+                            Access the system based on your role. Each portal is designed for your specific needs.
+                        </p>
+                    </header>
+
+                    <div class="cards-grid cards-grid-3">
+                        <!-- Student -->
+                        <a href="login.html?role=student" class="role-link">
+                            <article class="card role-card role-card-student">
+                                <div class="card-inner card-inner-centered">
+                                    <div class="role-icon role-icon-secondary">
+                                        <i data-lucide="users" class="icon-lg icon-on-secondary"></i>
+                                    </div>
+                                    <div class="role-text">
+                                        <h3 class="role-title">Student</h3>
+                                        <p class="role-description">
+                                            Book rides, track shuttles, and manage your reservations.
+                                        </p>
+                                    </div>
+                                    <div class="btn btn-outline role-btn">
+                                        Access Portal
+                                        <i data-lucide="arrow-right" class="icon-xs"></i>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+
+                        <!-- Driver -->
+                        <a href="login.html?role=driver" class="role-link">
+                            <article class="card role-card role-card-driver">
+                                <div class="card-inner card-inner-centered">
+                                    <div class="role-icon role-icon-accent">
+                                        <i data-lucide="bus" class="icon-lg icon-on-primary-light"></i>
+                                    </div>
+                                    <div class="role-text">
+                                        <h3 class="role-title">Driver</h3>
+                                        <p class="role-description">
+                                            View schedules, manage passengers, and track your routes.
+                                        </p>
+                                    </div>
+                                    <div class="btn btn-outline role-btn role-btn-accent">
+                                        Access Portal
+                                        <i data-lucide="arrow-right" class="icon-xs"></i>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+
+                        <!-- Admin -->
+                        <a href="login.html?role=admin" class="role-link">
+                            <article class="card role-card role-card-admin">
+                                <div class="card-inner card-inner-centered">
+                                    <div class="role-icon role-icon-primary">
+                                        <i data-lucide="shield" class="icon-lg icon-on-primary-light"></i>
+                                    </div>
+                                    <div class="role-text">
+                                        <h3 class="role-title">Admin</h3>
+                                        <p class="role-description">
+                                            Manage users, shuttles, routes, and system settings.
+                                        </p>
+                                    </div>
+                                    <div class="btn btn-outline role-btn role-btn-primary">
+                                        Access Portal
+                                        <i data-lucide="arrow-right" class="icon-xs"></i>
+                                    </div>
+                                </div>
+                            </article>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container footer-inner">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <i data-lucide="bus" class="icon-sm icon-on-secondary"></i>
+                    </div>
+                    <span class="footer-title">LouisanTheGO</span>
+                </div>
+                <p class="footer-text">
+                    © 2024 Saint Louis University. All rights reserved.
+                </p>
+            </div>
+        </footer>
+
+        <script src="/javascript/loginRole.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () { //Initialize icons
+                lucide.createIcons();
+            });
+        </script>
+    </body>
+</html>
