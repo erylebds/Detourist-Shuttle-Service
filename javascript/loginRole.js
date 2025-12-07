@@ -94,11 +94,21 @@ window.setDemo = function(role) {
 //Will be changed once the database is made
 window.handleLogin = function(e) {
     e.preventDefault();
-    const email = document.getElementById('email').value;
-    alert(`Logging in as ${email}... (Redirecting to Dashboard)`);
-    
-    //Mock Redirect
-    window.location.href = '/html/student/studentBooking.html';
+    const urlParams = new URLSearchParams(window.location.search);
+    const roleParam = urlParams.get("role") || "student";
+
+    const dashboardRoutes = {
+        student: "/html/student/studentBooking.html",
+        driver: "/html/driver/driverDashboard.html",
+        admin: "/html/admin/adminDashboard.html"
+    };
+
+    const redirectTo = dashboardRoutes[roleParam] || dashboardRoutes.student;
+
+    const email = document.getElementById("email").value;
+    alert(`Logging in as ${email}... Redirecting as ${roleParam}...`);
+
+    window.location.href = redirectTo;
 };
 
 //WIll be changed when database is made

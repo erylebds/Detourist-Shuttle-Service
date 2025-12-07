@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Driver Dashboard - SLU Shuttle</title>
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/driver/driverDashboard.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="map" class="icon-sm"></i>
+                        Navigation
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedule
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Passengers
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar">
+                        <span>MD</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name">Manong Driver</div>
+                        <div class="user-role">Driver ID: 8829</div>
+                    </div>
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                
+                <!-- Header -->
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="page-title">Good morning, Manong!</h1>
+                        <p class="page-subtitle">Here's your schedule for today.</p>
+                    </div>
+                    <button class="btn btn-accent btn-lg" onclick="startNavigation()">
+                        <i data-lucide="navigation" class="icon-sm"></i>
+                        Start Navigation
+                    </button>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <!-- Today's Trips -->
+                    <div class="stat-card accent">
+                        <div class="stat-content">
+                            <p class="stat-label">Today's Trips</p>
+                            <p class="stat-value">8</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="bus" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <!-- Total Passengers -->
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Total Passengers</p>
+                            <p class="stat-value">24</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="users" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <!-- Next Departure -->
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Next Departure</p>
+                            <p class="stat-value">09:30 AM</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="clock" class="icon-md"></i>
+                        </div>
+                    </div>
+
+                    <!-- Completed -->
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <p class="stat-label">Completed Today</p>
+                            <p class="stat-value">0</p>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i data-lucide="check-circle" class="icon-md"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content Grid -->
+                <div class="content-grid">
+                    
+                    <!-- Main Column (Current Assignment) -->
+                    <div class="main-column">
+                        
+                        <!-- Active Trip Card -->
+                        <article class="card active-trip-card">
+                            <div class="card-header-accent">
+                                <div class="trip-header-info">
+                                    <div class="shuttle-badge">
+                                        <i data-lucide="bus" class="icon-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="trip-shuttle-name">Shuttle 101</h3>
+                                        <p class="trip-plate">ABC-1234</p>
+                                    </div>
+                                </div>
+                                <span class="status-badge status-active">Active</span>
+                            </div>
+                            
+                            <div class="card-body">
+                                <h2 class="route-title">Main Campus ➝ Bakakeng</h2>
+                                
+                                <!-- Timeline Visualization -->
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-point start"></div>
+                                        <div class="timeline-content">
+                                            <p class="timeline-label">Pickup</p>
+                                            <p class="timeline-address">Main Campus Gate 2</p>
+                                            <p class="timeline-time">09:30 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-connector"></div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-point end"></div>
+                                        <div class="timeline-content">
+                                            <p class="timeline-label">Drop-off</p>
+                                            <p class="timeline-address">Bakakeng Campus</p>
+                                            <p class="timeline-time">Est. 10:15 AM</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Quick Trip Stats -->
+                                <div class="trip-stats-row">
+                                    <div class="trip-stat">
+                                        <p class="ts-value">14</p>
+                                        <p class="ts-label">Passengers</p>
+                                    </div>
+                                    <div class="trip-stat">
+                                        <p class="ts-value">6</p>
+                                        <p class="ts-label">Seats Left</p>
+                                    </div>
+                                    <div class="trip-stat">
+                                        <p class="ts-value">45</p>
+                                        <p class="ts-label">Minutes</p>
+                                    </div>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="trip-actions">
+                                    <button class="btn btn-accent btn-full">Start Trip</button>
+                                    <button class="btn btn-outline btn-full">Message All</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Schedule List -->
+                        <div class="card">
+                            <div class="card-header-simple">
+                                <h3 class="card-title">Today's Schedule</h3>
+                            </div>
+                            <div class="schedule-list">
+                                <!-- Item 1 (Active) -->
+                                <div class="schedule-item active">
+                                    <div class="schedule-time">
+                                        <p class="time">09:30 AM</p>
+                                        <p class="label">Depart</p>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <p class="route">Main Campus → Bakakeng</p>
+                                        <p class="details">Gate 2 → Main Gate</p>
+                                    </div>
+                                    <span class="status-badge status-next">Next</span>
+                                </div>
+
+                                <!-- Item 2 -->
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <p class="time">11:00 AM</p>
+                                        <p class="label">Depart</p>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <p class="route">Bakakeng → Main Campus</p>
+                                        <p class="details">Main Gate → Gate 2</p>
+                                    </div>
+                                    <span class="status-badge status-scheduled">Scheduled</span>
+                                </div>
+
+                                <!-- Item 3 -->
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <p class="time">01:30 PM</p>
+                                        <p class="label">Depart</p>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <p class="route">Main Campus → Navy Base</p>
+                                        <p class="details">Gate 2 → Main Gate</p>
+                                    </div>
+                                    <span class="status-badge status-scheduled">Scheduled</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column (Alerts/Map Placeholder) -->
+                    <div class="side-column">
+                        <div class="card alert-card">
+                            <div class="alert-icon">
+                                <i data-lucide="alert-circle" class="icon-md"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h4>Traffic Alert</h4>
+                                <p>Heavy traffic reported on Kennon Road. Expect 15 min delay.</p>
+                            </div>
+                        </div>
+
+                        <div class="card map-placeholder-card">
+                            <div class="map-placeholder">
+                                <i data-lucide="map-pin" class="icon-lg text-muted-foreground"></i>
+                                <p>Map View</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                lucide.createIcons();
+            });
+        </script>
+    </body>
+</html>
