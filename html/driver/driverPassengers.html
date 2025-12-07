@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Passengers - SLU Shuttle</title>
+        
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/driver/passengers.css">
+        
+        <!-- Icons & Fonts -->
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    </head>
+    <body class="font-sans">
+
+        <div class="dashboard-container">
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <i data-lucide="bus" class="icon-sm text-white"></i>
+                    </div>
+                    <span class="sidebar-title">SLU Shuttle</span>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <a data-target="driverDashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard" class="icon-sm"></i>
+                        Dashboard
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="calendar" class="icon-sm"></i>
+                        Schedule
+                    </a>
+                    <a data-target="driverPassengers.html" class="nav-item active">
+                        <i data-lucide="users" class="icon-sm"></i>
+                        Passengers
+                    </a>
+                </nav>
+
+                <div class="user-profile">
+                    <div class="avatar">
+                        <span>MD</span>
+                    </div>
+
+                    <div class="user-info">
+                        <div class="user-name">Manong Driver</div>
+                        <div class="user-role">Driver ID: 8829</div>
+                    </div>
+
+                    <!-- Logout -->
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='/html/index.html'">
+                        <i data-lucide="log-out" class="icon-sm"></i>
+                    </button>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="page-header flex justify-between items-center">
+                    <div>
+                        <h1 class="page-title">Passengers</h1>
+                        <p class="page-subtitle">Manage passengers for your current trip.</p>
+                    </div>
+                    <div class="route-badge">
+                        Main Campus ➝ Bakakeng • 09:30 AM
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <!-- Total -->
+                    <div class="stat-card">
+                        <div class="stat-icon secondary">
+                            <i data-lucide="users" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p id="totalCount" class="stat-number">3</p>
+                            <p class="stat-desc">Total Passengers</p>
+                        </div>
+                    </div>
+                    <!-- Boarded -->
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="check-circle" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p id="boardedCount" class="stat-number">1</p>
+                            <p class="stat-desc">Boarded</p>
+                        </div>
+                    </div>
+                    <!-- Waiting -->
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i data-lucide="alert-circle" class="icon-md"></i>
+                        </div>
+                        <div class="stat-info">
+                            <p id="waitingCount" class="stat-number">2</p>
+                            <p class="stat-desc">Waiting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="passengerSearch" class="search-input" placeholder="Search passengers by name..." onkeyup="filterPassengers()">
+                </div>
+
+                <!-- Passenger List -->
+                <div class="card list-card">
+                    <div class="card-header flex justify-between items-center">
+                        <h3 class="card-title">Passenger List</h3>
+                        <button class="btn btn-outline btn-sm" onclick="messageAll()">
+                            <i data-lucide="message-square" class="icon-xs mr-2"></i>
+                            Message All
+                        </button>
+                    </div>
+                    
+                    <div class="passenger-list" id="passengerListContainer">
+                        
+                        <!-- Passenger 1 (Confirmed) -->
+                        <div class="passenger-row" data-name="John Doe" data-status="confirmed">
+                            <div class="p-left">
+                                <div class="p-avatar bg-secondary text-secondary-foreground">JD</div>
+                                <div class="p-details">
+                                    <p class="p-name">John Doe</p>
+                                    <div class="p-location">
+                                        <i data-lucide="map-pin" class="icon-xs"></i> Main Gate 2
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-right">
+                                <span class="badge badge-secondary">
+                                    <i data-lucide="alert-circle" class="icon-xs mr-1"></i> Confirmed
+                                </span>
+                                <span class="badge badge-paid">Paid</span>
+                                
+                                <div class="action-group">
+                                    <button class="btn-icon" onclick="contactPassenger('John Doe')">
+                                        <i data-lucide="phone"></i>
+                                    </button>
+                                    <button class="btn btn-success btn-sm btn-confirm" onclick="confirmBoarding(this)">
+                                        Confirm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passenger 2 (Boarded) -->
+                        <div class="passenger-row boarded" data-name="Maria Santos" data-status="boarded">
+                            <div class="p-left">
+                                <div class="p-avatar bg-success text-success-foreground">MS</div>
+                                <div class="p-details">
+                                    <p class="p-name">Maria Santos</p>
+                                    <div class="p-location">
+                                        <i data-lucide="map-pin" class="icon-xs"></i> Library Shed
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-right">
+                                <span class="badge badge-success">
+                                    <i data-lucide="check-circle" class="icon-xs mr-1"></i> Boarded
+                                </span>
+                                <span class="badge badge-paid">Paid</span>
+                                
+                                <div class="action-group">
+                                    <button class="btn-icon" onclick="contactPassenger('Maria Santos')">
+                                        <i data-lucide="phone"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Passenger 3 (Pending) -->
+                        <div class="passenger-row" data-name="Rico Puno" data-status="pending">
+                            <div class="p-left">
+                                <div class="p-avatar bg-secondary text-secondary-foreground">RP</div>
+                                <div class="p-details">
+                                    <p class="p-name">Rico Puno</p>
+                                    <div class="p-location">
+                                        <i data-lucide="map-pin" class="icon-xs"></i> Gate 1
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-right">
+                                <span class="badge badge-warning">
+                                    <i data-lucide="alert-circle" class="icon-xs mr-1"></i> Pending
+                                </span>
+                                <span class="badge badge-unpaid">Unpaid</span>
+                                
+                                <div class="action-group">
+                                    <button class="btn-icon" onclick="contactPassenger('Rico Puno')">
+                                        <i data-lucide="phone"></i>
+                                    </button>
+                                    <button class="btn btn-success btn-sm btn-confirm" onclick="confirmBoarding(this)">
+                                        Confirm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="noResults" class="empty-state" style="display: none;">
+                        <i data-lucide="search-x" class="icon-lg text-muted-foreground"></i>
+                        <p>No passengers found matching "<span id="searchText"></span>"</p>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <script src="/javascript/driver/passengers.js"></script>
+        <script src="/javascript/driver/navigation.js"></script>
+    </body>
+</html>

@@ -15,8 +15,6 @@
     <body class="font-sans">
 
         <div class="dashboard-container">
-            
-            <!-- Sidebar -->
             <aside class="sidebar">
                 <div class="sidebar-header">
                     <div class="sidebar-logo">
@@ -26,19 +24,15 @@
                 </div>
 
                 <nav class="sidebar-nav">
-                    <a href="#" class="nav-item active">
+                    <a data-target="driverDashboard.html" class="nav-item active">
                         <i data-lucide="layout-dashboard" class="icon-sm"></i>
                         Dashboard
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i data-lucide="map" class="icon-sm"></i>
-                        Navigation
                     </a>
                     <a href="#" class="nav-item">
                         <i data-lucide="calendar" class="icon-sm"></i>
                         Schedule
                     </a>
-                    <a href="#" class="nav-item">
+                    <a data-target="driverPassengers.html" class="nav-item">
                         <i data-lucide="users" class="icon-sm"></i>
                         Passengers
                     </a>
@@ -48,20 +42,20 @@
                     <div class="avatar">
                         <span>MD</span>
                     </div>
+                    
                     <div class="user-info">
                         <div class="user-name">Manong Driver</div>
                         <div class="user-role">Driver ID: 8829</div>
                     </div>
-                    <button class="logout-btn" title="Logout" onclick="window.location.href='index.html'">
+
+                    <!-- Logout -->
+                    <button class="logout-btn" title="Logout" onclick="window.location.href='/html/index.html'">
                         <i data-lucide="log-out" class="icon-sm"></i>
                     </button>
                 </div>
             </aside>
 
-            <!-- Main Content -->
             <main class="main-content">
-                
-                <!-- Header -->
                 <div class="dashboard-header">
                     <div>
                         <h1 class="page-title">Good morning, Manong!</h1>
@@ -122,8 +116,6 @@
 
                 <!-- Dashboard Content Grid -->
                 <div class="content-grid">
-                    
-                    <!-- Main Column (Current Assignment) -->
                     <div class="main-column">
                         
                         <!-- Active Trip Card -->
@@ -257,7 +249,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </main>
         </div>
@@ -267,5 +258,6 @@
                 lucide.createIcons();
             });
         </script>
+        <script src="/javascript/driver/navigation.js"></script>
     </body>
 </html>

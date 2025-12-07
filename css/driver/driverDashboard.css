@@ -4,7 +4,7 @@
     background-color: var(--color-muted);
 }
 
-/* --- Sidebar Styles (Same as Student) --- */
+/* --- Sidebar Styles --- */
 .sidebar {
     width: 280px;
     background: linear-gradient(135deg, var(--color-primary) 0%, #1e293b 100%);
